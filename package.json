@@ -1,0 +1,37 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "Project for a portfolio site",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neveleneves/portfolio-site.git"
+  },
+  "keywords": [
+    "express",
+    "react",
+    "sass",
+    "redux"
+  ],
+  "author": "Max Nikonov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neveleneves/portfolio-site/issues"
+  },
+  "homepage": "https://github.com/neveleneves/portfolio-site#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}
