@@ -1,4 +1,0 @@
-{
-  "port": 5000,
-  "mongoURI": "mongodb+srv://neveleneves:seveneleven711@porfolio-cluster.ffj4u.mongodb.net/portfolio-database?retryWrites=true&w=majority"
-}
