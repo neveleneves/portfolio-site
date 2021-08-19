@@ -1,0 +1,39 @@
+@import "../../variable.scss";
+
+.header {
+  height: 86px;
+  width: 100%;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 300px;
+    padding: 30px 40px 30px 50px;
+    border-bottom: 1px solid $line_color;
+    background-color: $bg_color;
+  }
+}
+.menu {
+  width: 550px;
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+  }
+  &__item {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+  }
+  &__link {
+    text-transform: uppercase;
+    color: $text_color;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    text-decoration: none;
+  }
+}
