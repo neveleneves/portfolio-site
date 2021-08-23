@@ -39,7 +39,7 @@ export default function Intro() {
                 <img
                   className={s.photo__img}
                   src={photo}
-                  alt="Profile Photo"
+                  alt="Profile"
                 ></img>
               </div>
             </div>
