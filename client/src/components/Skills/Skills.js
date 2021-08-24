@@ -14,7 +14,7 @@ export default function Skills() {
       <SectionTitle title={"skills"} />
       <div className={s.skills__content}>
         <div className={s.skills__body}>
-          <div className={s.stack}>
+          <div className={`${s.stack} ${s.stack__wrapper}`}>
             <h3 className={s.stack__title}>USING NOW:</h3>
             <div className={s.stack__skills}>
               <ul className={s.stack__grid}>
@@ -33,7 +33,7 @@ export default function Skills() {
           <div className={s.stack}>
             <h3 className={s.stack__title}>LEARNING:</h3>
             <div className={s.stack__skills}>
-            <ul className={s.stack__grid}>
+              <ul className={s.stack__grid}>
                 {learningSkills.map((item, index) => {
                   return (
                     <StackItem

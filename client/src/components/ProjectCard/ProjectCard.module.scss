@@ -1,0 +1,9 @@
+@import "../../variable.scss";
+
+.card {
+    height: 240px;
+    background-color: $bg_color;
+    &__wrapper {
+        margin-bottom: 35px;
+    }
+}
