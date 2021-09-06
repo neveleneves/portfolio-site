@@ -8,6 +8,9 @@ app.use(express.json({extended: true}))
 
 // app.use(cookieParser());
 
+//Route for MainPage
+app.use('/api/main', require('./routes/main'))
+
 //Set the server port value
 const PORT = config.get('port') || 5000
 

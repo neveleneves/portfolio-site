@@ -18,12 +18,12 @@ export default function Skills() {
             <h3 className={s.stack__title}>USING NOW:</h3>
             <div className={s.stack__skills}>
               <ul className={s.stack__grid}>
-                {usingSkills.map((item, index) => {
+                {usingSkills.map((item) => {
                   return (
                     <StackItem
-                      SkillLogo={item.skillLogo}
-                      skillTitle={item.skillTitle}
-                      key={index}
+                      logoPath={item.path_img}
+                      title={item.name}
+                      key={item._id}
                     />
                   );
                 })}
@@ -34,12 +34,12 @@ export default function Skills() {
             <h3 className={s.stack__title}>LEARNING:</h3>
             <div className={s.stack__skills}>
               <ul className={s.stack__grid}>
-                {learningSkills.map((item, index) => {
+                {learningSkills.map((item) => {
                   return (
                     <StackItem
-                      SkillLogo={item.skillLogo}
-                      skillTitle={item.skillTitle}
-                      key={index}
+                      logoPath={item.path_img}
+                      title={item.name}
+                      key={item._id}
                     />
                   );
                 })}
