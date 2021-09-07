@@ -7,22 +7,26 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 import s from "./Portfolio.module.scss";
 
 export default function Portfolio() {
-  const profileProjects = useGetProjects();
+  const { projects } = useGetProjects();
 
   return (
     <section className={`${s.portfolio} ${s.portfolio__wrapper}`}>
       <SectionTitle title={"portfolio"} />
       <div className={s.cards}>
-        <ProjectCard 
-        
-        />
-        <ProjectCard 
-        
-        />
-        <ProjectCard 
-
-        />
+        {projects.length !== 0
+          ? projects.map((item) => {
+              return (
+                <ProjectCard
+                  title={item.title}
+                  description={item.description}
+                  stack={item.stack}
+                  imagePath={item.image_path}
+                  key={item._id}
+                />
+              );
+            })
+          : null}
       </div>
-    </section> 
+    </section>
   );
 }
