@@ -19,7 +19,7 @@ export default function Portfolio() {
                 <ProjectCard
                   title={item.title}
                   description={item.description}
-                  stack={item.stack}
+                  marks={item.stack}
                   imagePath={item.image_path}
                   key={item._id}
                 />

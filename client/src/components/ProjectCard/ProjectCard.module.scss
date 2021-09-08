@@ -1,10 +1,42 @@
 @import "../../variable.scss";
 
 .card {
-    height: 240px;
-    background-color: $bg_color;
-    display: flex;
-    &__wrapper {
-        margin-bottom: 35px;
-    }
-} 
+  height: 240px;
+  background-color: $bg_color;
+  display: flex;
+  &__wrapper {
+    margin-bottom: 35px;
+  }
+  &__content {
+    width: 100%;
+    padding: 30px 50px 35px;
+  }
+}
+.content {
+  &__title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: $title_color;
+    margin-bottom: 15px;
+  }
+  &__marks {
+    margin-bottom: 25px;
+  }
+}
+.marks {
+  display: flex;
+}
+.description {
+  &__text {
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 25px;
+    text-align: justify;
+    color: #8491a0;
+  }
+}
