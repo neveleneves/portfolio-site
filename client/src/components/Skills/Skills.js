@@ -1,5 +1,5 @@
 import React from "react";
-import { useSetSkills } from "../../hooks/setSkills.hook";
+import { useGetSkills } from "../../hooks/getSkills.hook";
 
 import SectionTitle from "../SectionTitle/SectionTitle";
 import StackItem from "../StackItem/StackItem";
@@ -7,7 +7,7 @@ import StackItem from "../StackItem/StackItem";
 import s from "./Skills.module.scss";
 
 export default function Skills() {
-  const { usingSkills, learningSkills } = useSetSkills();
+  const { usingSkills, learningSkills } = useGetSkills();
 
   return (
     <section className={`${s.skills} ${s.skills__wrapper}`}>
@@ -18,7 +18,7 @@ export default function Skills() {
             <h3 className={s.stack__title}>USING NOW:</h3>
             <div className={s.stack__skills}>
               <ul className={s.stack__grid}>
-                {usingSkills.length !== 0
+                {usingSkills.length
                   ? usingSkills.map((item) => {
                       return (
                         <StackItem
@@ -46,8 +46,7 @@ export default function Skills() {
                         />
                       );
                     })
-                  : null
-                  }
+                  : null}
               </ul>
             </div>
           </div>

@@ -3,6 +3,7 @@ const router = Router();
 
 const Skills = require("../models/Skills");
 const Project = require("../models/Project");
+const Post = require("../models/Post");
 
 //Current prefix /api/main
 
@@ -27,8 +28,21 @@ router.get("/projects", async (req, res) => {
 
     res.status(200).json(projects);
   } catch (e) {
-    res.status(500).json({ message: "Failed to get the list of project" });
-    console.warn("Failed to get the list of skills: ", e.message);
+    res.status(500).json({ message: "Failed to get the list of projects" });
+    console.warn("Failed to get the list of projects: ", e.message);
+  }
+});
+
+router.get("/posts", async (req, res) => {
+  try {
+    const posts = await Post.find({});
+    if (!posts.length)
+      return res.status(504).json({ message: "Post list is empty" });
+
+    res.status(200).json(posts);
+  } catch (e) {
+    res.status(500).json({ message: "Failed to get the list of posts" });
+    console.warn("Failed to get the list of posts: ", e.message);
   }
 });
 module.exports = router;

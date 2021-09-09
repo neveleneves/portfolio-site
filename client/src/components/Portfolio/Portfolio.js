@@ -13,7 +13,7 @@ export default function Portfolio() {
     <section className={`${s.portfolio} ${s.portfolio__wrapper}`}>
       <SectionTitle title={"portfolio"} />
       <div className={s.cards}>
-        {projects.length !== 0
+        {projects.length
           ? projects.map((item) => {
               return (
                 <ProjectCard

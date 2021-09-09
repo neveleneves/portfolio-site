@@ -14,7 +14,7 @@ import { ReactComponent as Figma } from "../img/figma.svg";
 import { ReactComponent as Express } from "../img/express.svg";
 import { ReactComponent as SASS } from "../img/sass.svg";
 
-export const useSetSkills = () => {
+export const useGetSkills = () => {
   const [usingSkills, setUsingSkills] = useState([]);
   const [learningSkills, setLearningSkills] = useState([]);
 
