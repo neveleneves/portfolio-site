@@ -6,8 +6,18 @@
   background: $bg_color;
   border-radius: 5px;
   position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 100%;
+    background-color: $main_color;
+    border-radius: 5px 0px 0px 5px;
+  }
   &__wrapper {
-    margin-bottom: 20px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
   &__title {
     font-family: Jost;
@@ -15,5 +25,20 @@
     font-weight: 500;
     font-size: 18px;
     color: #ecf8ff;
+    padding: 21px 0px;
+    margin-left: 50px;
+  }
+}
+.date {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  &__value {
+    color: $semi_color;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 22px;
   }
 }

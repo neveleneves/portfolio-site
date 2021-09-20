@@ -9,6 +9,9 @@ export default function BlogPost(props) {
   return (
     <li className={`${s.post} ${s.post__wrapper}`}>
       <h2 className={s.post__title}>{title}</h2>
+      <aside className={s.date}>
+        <span className={s.date__value}>September 18, 2020</span>
+      </aside>
     </li>
   );
 }

@@ -4,7 +4,7 @@
   height: 240px;
   background-color: $bg_color;
   display: flex;
-  &__wrapper {
+  &:not(:last-child) {
     margin-bottom: 35px;
   }
   &__content {
