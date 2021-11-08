@@ -1,0 +1,3 @@
+export const GET_SKILLS = "SKILLS/GET_SKILLS";
+export const LOADER_SHOW = "SKILLS/LOADER_SHOW";
+export const LOADER_HIDE = "SKILLS/LOADER_HIDE";

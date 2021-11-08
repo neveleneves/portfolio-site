@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 //Using Now
 import { ReactComponent as JS } from "../img/js.svg";
@@ -14,62 +15,38 @@ import { ReactComponent as Figma } from "../img/figma.svg";
 import { ReactComponent as Express } from "../img/express.svg";
 import { ReactComponent as SASS } from "../img/sass.svg";
 
+import { getSkillsList } from "../redux/action/skillsActions";
+
 export const useGetSkills = () => {
-  const [usingSkills, setUsingSkills] = useState([]);
-  const [learningSkills, setLearningSkills] = useState([]);
+  const dispatch = useDispatch();
+  const { usingSkills, learningSkills, loadingSkills} = useSelector((state) => state.skills);
+
+  const [usingSkillsCards, setUsingSkillsCards] = useState([]);
+  const [learningSkillsCards, setLearningSkillsCards] = useState([]);
 
   useEffect(() => {
-    let isCancelled = false;
+    dispatch(getSkillsList());
+  }, [dispatch]);
 
-    const usingLogo = [JS, HTML, CSS, React, Node, Mongo, GitHub, Figma];
-    const learningLogo = [React, Express, SASS];
+  useEffect(() => {
+    if (learningSkills?.length && usingSkills?.length) {
+      const usingLogo = [JS, HTML, CSS, React, Node, Mongo, GitHub, Figma];
+      const learningLogo = [React, Express, SASS];
 
-    const getSkillList = async () => {
-      try {
-        if (!isCancelled) {
-          const response = await fetch(`/api/main/skills`, {
-            method: "GET",
-          });
-          const skillList = await response.json();
+      setUsingSkillsCards(
+        usingSkills.map((item, index) => {
+          item.svg = usingLogo[index];
+          return item;
+        })
+      );
+      setLearningSkillsCards(
+        learningSkills.map((item, index) => {
+          item.svg = learningLogo[index];
+          return item;
+        })
+      );
+    }
+  }, [learningSkills, usingSkills]);
 
-          if (!response.ok) {
-            throw new Error(
-              skillList.message || "The request was executed incorrectly"
-            );
-          }
-
-          if (skillList.length) {
-            let usingSkillsList = skillList.filter(
-              (item) => item.type === "using_stack"
-            );
-            let learningSkillsList = skillList.filter(
-              (item) => item.type === "learning_stack"
-            );
-
-            setUsingSkills(
-              usingSkillsList.map((item, index) => {
-                item.svg = usingLogo[index];
-                return item;
-              })
-            );
-            setLearningSkills(
-              learningSkillsList.map((item, index) => {
-                item.svg = learningLogo[index];
-                return item;
-              })
-            );
-          }
-        }
-      } catch (e) {
-        console.warn("The request was executed incorrectly: ", e.message)
-      }
-    };
-    getSkillList();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
-
-  return { usingSkills, learningSkills };
+  return { usingSkillsCards, learningSkillsCards, loadingSkills};
 };

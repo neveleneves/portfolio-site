@@ -1,13 +1,16 @@
 import React from "react";
-import { useGetSkills } from "../../hooks/getSkills.hook";
 
 import SectionTitle from "../SectionTitle/SectionTitle";
 import StackItem from "../StackItem/StackItem";
 
 import s from "./Skills.module.scss";
 
+import { useGetSkills } from "../../hooks/getSkills.hook";
+import { LoadingSpinner } from "../LoadingSpinner/LoadingSpinner";
+
 export default function Skills() {
-  const { usingSkills, learningSkills } = useGetSkills();
+  const { usingSkillsCards, learningSkillsCards, loadingSkills } =
+    useGetSkills();
 
   return (
     <section className={`${s.skills} ${s.skills__wrapper}`}>
@@ -18,17 +21,21 @@ export default function Skills() {
             <h3 className={s.stack__title}>USING NOW:</h3>
             <div className={s.stack__skills}>
               <ul className={s.stack__grid}>
-                {usingSkills.length
-                  ? usingSkills.map((item) => {
-                      return (
-                        <StackItem
-                          Logo={item.svg}
-                          title={item.name}
-                          key={item._id}
-                        />
-                      );
-                    })
-                  : null}
+                {Array.isArray(usingSkillsCards) &&
+                usingSkillsCards.length !== 0 &&
+                !loadingSkills ? (
+                  usingSkillsCards.map((item) => {
+                    return (
+                      <StackItem
+                        Logo={item.svg}
+                        title={item.name}
+                        key={item._id}
+                      />
+                    );
+                  })
+                ) : (
+                  <LoadingSpinner />
+                )}
               </ul>
             </div>
           </div>
@@ -36,17 +43,21 @@ export default function Skills() {
             <h3 className={s.stack__title}>LEARNING:</h3>
             <div className={s.stack__skills}>
               <ul className={s.stack__grid}>
-                {learningSkills.length !== 0
-                  ? learningSkills.map((item) => {
-                      return (
-                        <StackItem
-                          Logo={item.svg}
-                          title={item.name}
-                          key={item._id}
-                        />
-                      );
-                    })
-                  : null}
+                {Array.isArray(learningSkillsCards) &&
+                learningSkillsCards.length !== 0 &&
+                !loadingSkills ? (
+                  learningSkillsCards.map((item) => {
+                    return (
+                      <StackItem
+                        Logo={item.svg}
+                        title={item.name}
+                        key={item._id}
+                      />
+                    );
+                  })
+                ) : (
+                  <LoadingSpinner />
+                )}
               </ul>
             </div>
           </div>
