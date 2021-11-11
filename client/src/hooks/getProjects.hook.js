@@ -1,37 +1,16 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPortfolioList } from "../redux/action/portfolioActions";
 
 export const useGetProjects = () => {
-  const [projects, setProjectsList] = useState([]);
+  const dispatch = useDispatch();
+  const { portfolioList, loadingPortfolio } = useSelector(
+    (state) => state.portfolio
+  );
 
   useEffect(() => {
-    let isCancelled = false;
+    dispatch(getPortfolioList());
+  }, [dispatch]);
 
-    const getProjectList = async () => {
-      try {
-        if (!isCancelled) {
-          const response = await fetch(`/api/main/projects`, {
-            method: "GET",
-          });
-          const projectList = await response.json();
-
-          if (!response.ok) {
-            throw new Error(
-              projectList.message || "The request was executed incorrectly"
-            );
-          }
-
-          if (projectList.length) setProjectsList(projectList);
-        }
-      } catch (e) {
-        console.warn("The request was executed incorrectly: ", e.message);
-      }
-    };
-    getProjectList();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, []);
-
-  return {projects};
+  return { portfolioList, loadingPortfolio };
 };

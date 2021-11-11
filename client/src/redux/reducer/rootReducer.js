@@ -1,8 +1,13 @@
 import { combineReducers } from "redux";
+
 import { skillsReducer } from "./skillsReducer";
+import { portfolioReducer } from "./portfolioReducer";
+import { blogReducer } from "./blogReducer";
 
 const appReducer = combineReducers({
-    skills: skillsReducer
+  skills: skillsReducer,
+  portfolio: portfolioReducer,
+  blog: blogReducer,
 });
 
 export const rootReducer = (state, action) => {
